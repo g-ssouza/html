@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+}
+header{
+    background-color: brown;
+}
+header h1{
+    color: white;
+    margin: 0;
+    padding: 10px;
+    font-family: Comic Sans MS, sans-serif;
+    text-align: center;
+}
+header p{
+    color: #fff;
+    font-family: Trebuchet MS, sans-serif;
+    text-align: center;
+}
+body{
+    background-color: rgb(255, 155, 155);
+}
+main{
+    padding: 20px;
+    width: 400px;
+    margin: auto;
+}
+main h2{
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+}
+section{
+    background-color: hsl(0, 100%, 68%);
+    border: 2px solid #007fd7;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+section h3{
+    margin: 0;
+    font-family: Georgia, sans-serif;
+    color: #fce1e0
+}
+section p{
+    margin: 16px 0 0;
+    font-family: Verdana, sans-serif;
+    color: #000000
+}
+nav{
+    text-align: center;
+    margin-top: 10px;
+}
+nav button{
+    align-items: center;
+    margin-bottom: 10px;
+    height: 50px;
+    width: 70px;
+    border-radius: 25px;
+    border: 2px solid #007fd7;
+}
+footer{
+    height: 50px;
+    background-color: #007fd7;
+}
+footer p{
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    font-size: 22px;
+}
+
+/*PAGINA SOBRE NOS*/
+#sobre-nos-outro{
+    color:#121fda ;
+}
+#h2-outro{
+    text-align: center;
+    color: #121fda;
+}
+
+.button1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: aliceblue;
+    border: 1px solid #045e82;
+    margin: 10px;
+    border-radius: 20px;
+    height: 50px;
+    width: 100px;
+}
+    
