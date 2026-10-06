@@ -71,3 +71,6 @@ button{
     height: 40px;
     width: 150px;
 }
+a{
+    text-decoration: none;
+}
