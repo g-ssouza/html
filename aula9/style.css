@@ -1,0 +1,73 @@
+body{
+    margin: 0;
+    text-align: center;
+    background-color: pink;
+    font-family: Arial, sans serif;
+}
+.titulo-header{
+    text-align: center;
+    font-size: 24px;
+    color: #000000;
+}
+.titulo-header img{
+    height: 200px;
+    border-radius: 50% ;
+}
+
+/*==========MAIN=======*/
+main{
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px 16px;
+}
+.card{
+    text-align: center;
+    background-color: #fd98b4;
+    border: 2px solid#d81616;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 14px 16px;
+}
+.card h4{
+    color: #733849;
+    font-size: 25px;
+}
+.card p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+}
+.cancer-mama{
+    background-color: #fdacc3;
+    border: 2px solid #770000;
+}
+
+.informacao-campanha{
+    background-color: #fabdcf;
+    border: 2px solid #ff88aa;
+}
+/*==========FOOTER============*/
+
+.container{
+    text-align: center;
+    height: 120px;
+    background-color: #ffa2a2;
+}
+.container h5{
+    padding-top: 20px;
+    color: #030202;
+    font-size: 22px;
+}
+.redes-sociais{
+    margin-top: 20px;
+}
+#maps{
+    padding-right: 10px;
+}
+button{
+    text-align: center;
+    background-color: #fc8484;
+    border: 1px solid #801a01;;
+    border-radius: 20px;
+    height: 40px;
+    width: 150px;
+}
