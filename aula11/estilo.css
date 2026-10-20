@@ -133,3 +133,14 @@ a {
 a:hover {
   color: #b85309;
 }
+
+.container-button button{
+    font-size: 16px;
+    align-items: center;
+    background-color: aliceblue;
+    border: 1px solid #045e82;
+    margin: 10px;
+    border-radius: 20px;
+    height: 50px;
+    width: 100px;
+}
