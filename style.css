@@ -85,8 +85,12 @@ hr{
     width: 100px;
 }
 .container-button button:hover{
-    background-color: rgb(212, 234, 253);
-    margin: 8px;
+    color: #ececec;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgb(121, 118, 118);
+    border-color: #180081;
+    background-color: #136bbe;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.4s ease-out;
 }
 
 
