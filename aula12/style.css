@@ -1,0 +1,36 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+    height: 150px;
+    width: 100%;
+    background-color: brown;
+    border: 1px solid rgb(78, 128, 123);
+}
+h1{
+    font-family: Arial, sans-serif;
+}
+p{
+    font-family: Cambria, serif;
+}
+main{
+    padding-top: 30px;
+    text-align: center;
+    height: 500px;
+    width: 100%;
+    border: 1px solid rgb(78, 128, 123);
+}
+section{
+    background-color: aqua;
+}
+
+main h2{
+    padding-bottom: 10px;
+    font-size: 30px;
+}
