@@ -1,60 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mídia em HTML — Cafeteria Grão Dourado</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <header>
     <h1>☕ Cafeteria Grão Dourado</h1>
     <p>Pica-Pau em apenas uma páina.</p>
   </header>
-  
+
 
   <!-- ===== VÍDEO ===== -->
-   <main>
+  <main>
     <section>
       <div class="videoo">
-      <h2>Nosso vídeo</h2>
-      <video width="640" height="360" controls poster="imagem/poster.png" preload="metadata">
-      <source src="video/cafe.mp4" type="video/mp4">
-      <source src="video/cafe.webm" type="video/webm">
-      <track src="video/legenda.vtt" kind="subtitles" srclang="pt" label="Português" default>
-      Seu navegador não suporta vídeo.
-      <a href="video/cafe.mp4">Baixe o vídeo (MP4)</a>.
-      </video>
-    </div>
+        <h2>Nosso vídeo</h2>
+        <video width="640" height="360" controls poster="imagem/poster.png" preload="metadata">
+          <source src="video/cafe.mp4" type="video/mp4">
+          <source src="video/cafe.webm" type="video/webm">
+          <track src="video/legenda.vtt" kind="subtitles" srclang="pt" label="Português" default>
+          Seu navegador não suporta vídeo.
+          <a href="video/cafe.mp4">Baixe o vídeo (MP4)</a>.
+        </video>
+      </div>
     </section>
-    
-    
+
+    <!-- ===== ÁUDIO ===== -->
     <section>
-      <!-- ===== ÁUDIO ===== -->
-      <h2>Nossa vinheta</h2>
-      <audio controls>
-        <source src="audio/jingle.mp3" type="audio/mpeg">
-        <source src="audio/jingle.ogg" type="audio/ogg">
-        Seu navegador não suporta áudio.
-        <a href="audio/jingle.mp3">Baixe a vinheta (MP3)</a>.
-      </audio>
+      <div class="vinheta">
+        <h2>Nossa vinheta</h2>
+        <audio controls>
+          <source src="audio/jingle.mp3" type="audio/mpeg">
+          <source src="audio/jingle.ogg" type="audio/ogg">
+          Seu navegador não suporta áudio.
+          <a href="audio/jingle.mp3">Baixe a vinheta (MP3)</a>.
+        </audio>
+      </div>
     </section>
-  
- 
 
-  <!-- ===== YOUTUBE ===== -->
-  <h2>Vídeo do YouTube</h2>
-  <!-- Troque SEU_ID_DO_VIDEO pelo código que aparece depois de "v=" no endereço do vídeo -->
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/E25m0zIAAL8?si=QV3_JuCRSTNMnzrB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <!-- ===== YOUTUBE ===== -->
+    <div class="youtube">
+      <h2>Vídeo do YouTube</h2>
+      <!-- Troque SEU_ID_DO_VIDEO pelo código que aparece depois de "v=" no endereço do vídeo -->
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/E25m0zIAAL8?si=QV3_JuCRSTNMnzrB"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
 
-  <!-- ===== PDF ===== -->
-  <h2>Nosso cardápio</h2>
-  <object data="docs/cardapio.pdf" type="application/pdf" width="640" height="400">
-    Seu navegador não mostra PDF aqui.
-    <a href="docs/cardapio.pdf">Abra o cardápio em PDF</a>.
-  </object>
+    <div class="cardapio">
+      <!-- ===== PDF ===== -->
+      <h2>Nosso cardápio</h2>
+      <object data="docs/cardapio.pdf" type="application/pdf" width="640" height="400">
+        Seu navegador não mostra PDF aqui.
+        <a href="docs/cardapio.pdf">Abra o cardápio em PDF</a>.
+      </object>
   </main>
 
+  <footer>
+    <div class="voltar">
+    <a href="../index.html"><button>Voltar</button></a>
+  </div>
+  </footer>
+  
+  
+
+
 </body>
+
 </html>

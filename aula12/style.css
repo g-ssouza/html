@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 header{
@@ -19,18 +20,49 @@ h1{
 p{
     font-family: Cambria, serif;
 }
+h2{
+    color: white;
+}
 main{
-    padding-top: 30px;
-    text-align: center;
-    height: 500px;
+    margin: 0;
+    text-align: center; 
     width: 100%;
     border: 1px solid rgb(78, 128, 123);
 }
-section{
-    background-color: aqua;
-}
-
 main h2{
     padding-bottom: 10px;
     font-size: 30px;
+}
+.videoo{
+    background-color: rgb(72, 94, 219);
+}
+.videoo h2{
+    padding-top: 15px;
+}
+.vinheta{
+    background-color: brown;
+}
+.youtube{
+    background-color:rgb(72, 94, 219) ;
+}
+.cardapio{
+    background-color: brown;
+}
+.voltar button{
+    font-size: 16px;
+    background-color: aliceblue;
+    border: 1px solid #045e82;
+    margin: 10px;
+    border-radius: 20px;
+    height: 50px;
+    width: 100px;
+}
+
+.voltar button:hover{
+    color: #ececec;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgb(121, 118, 118);
+    border-color: #180081;
+    background-color: #136bbe;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.4s ease-out;
 }
