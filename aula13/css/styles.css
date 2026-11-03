@@ -1,0 +1,204 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Estilo do body */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.anotacao {
+  background-color: rgb(244, 248, 19);
+  padding: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.anotacao p {
+  margin: 8px 0;
+}
+
+/* Cabeçalho */
+.cabecalho {
+  padding: 210px ;
+  text-align: center;
+  color: white;
+  background-color: #0a1128;                      /* reserva, caso a imagem não carregue */
+  background-image: url(../imagem/banner_responsivo.png);
+  background-size:right;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Barra de navegação: links lado a lado */
+.barra_nav {
+  display: flex;
+  justify-content: center;
+  background-color: #4979ff;
+}
+
+.barra_nav a {
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 15px;
+}
+
+/* Trocar a cor quando o cursor estiver sobre o link */
+.barra_nav a:hover {
+  background-color: #0104cc;
+  color: #ececec;
+  transform: translateY(6px);
+  box-shadow: 0 12px 24px rgb(121, 118, 118);
+  border-color: #180081;
+  background-color: #136bbe;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.4s ease-out;
+}
+
+/* Contorno para quem navega pelo teclado */
+.barra_nav a:focus-visible {
+  outline: 3px solid #f68e36;
+  outline-offset: -3px;
+}
+
+/* Coluna: as duas colunas lado a lado */
+.coluna {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Barra lateral: 30% da largura */
+.lateral {
+  flex: 30%;
+  text-align: center;
+  background-color: #9dc4ff;
+  padding: 20px;
+}
+
+/* Coluna principal: 70% da largura */
+.principal {
+  flex: 70%;
+  background-color: #97bffc;
+  padding: 20px;
+}
+
+.legenda {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Imagens falsas, apenas para marcar o espaço */
+.imagem_falsa {
+  background-image: url(../imagem/euu.png);
+  margin: auto;
+  width: 450px;
+  background-repeat: no-repeat;
+  height: 450px;
+}
+
+.imagem_falsa2 {
+  margin: auto;
+  background-image: url(../imagem/java.png);
+  width: 128px;
+  height: 128px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.imagem_falsa3 {
+
+  background-image: url(../imagem/mysql.png);
+  margin: auto;
+  height: 128px;
+  width: 128px;
+  background-repeat: no-repeat;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.imagem_falsa4 {
+  margin: auto;
+  background-image: url(../imagem/css.png);
+  height: 128px;
+  width: 128px;
+  background-repeat: no-repeat;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+#img4{
+  margin: 0;
+}
+#img5{
+  background-image: url(../imagem/Spring.png);
+  margin: 0;
+}
+/* Rodapé */
+.rodape {
+  padding: 20px;
+  text-align: center;
+  background-color: #ddd;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media screen and (max-width: 1323px){
+  .cabecalho {
+
+    padding: 180px;
+    background-image: url(../imagem/banner_1323.png);
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+  }
+  .lateral h2{
+    text-align: center;
+  }
+
+  .imagem_falsa {
+
+    background-position: center;
+    background-size: 80%;
+  }
+}
+
+
+/* Tablets e celulares (até 768px): as colunas ficam uma embaixo da outra */
+@media screen and (max-width: 768px) {
+  .coluna {
+    flex-direction: column;
+  }
+  .cabecalho {
+
+    padding: 210px;
+    background-image: url(../imagem/banner_500x800.png);
+    background-size: center;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+/* Celulares (até 500px): menu empilhado e banner próprio para tela pequena */
+@media screen and (max-width: 500px) {
+  .barra_nav {
+    flex-direction: column;
+  }
+
+  .lateral h2{
+    text-align: center;
+  }
+  .cabecalho {
+
+    padding: 150px;
+    background-image: url(../imagem/banner_celular_420x250.png);
+    background-size: center;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .imagem_falsa {
+
+    background-position: center;
+    background-size: 80%;
+  }
+}
