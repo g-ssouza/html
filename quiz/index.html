@@ -1,0 +1,1238 @@
+  <!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Humano ou IA</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=EB+Garamond:wght@500;600;700&display=swap">
+<!-- Novas fontes: Space Grotesk (geométrica/tech) e Plus Jakarta Sans (interface moderna) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<script>
+(function () {
+  var root = document.documentElement;
+  var escuro = window.matchMedia("(prefers-color-scheme: dark)");
+  var celular = window.matchMedia("(max-width: 768px)");
+
+  function lerSalvo() {
+    try {
+      var t = localStorage.getItem("theme");
+      return (t === "light" || t === "dark") ? t : null;
+    } catch (e) { return null; }
+  }
+
+  function aplicar() {
+    var salvo = lerSalvo();
+    var tema;
+    if (celular.matches && salvo) {
+      tema = salvo;                                // celular: vale o botão
+    } else {
+      tema = escuro.matches ? "dark" : "light";    // computador: segue o sistema
+    }
+    root.setAttribute("data-theme", tema);
+  }
+
+  aplicar();
+
+  // Computador: acompanha o sistema ao vivo
+  [escuro, celular].forEach(function (mq) {
+    if (mq.addEventListener) { mq.addEventListener("change", aplicar); }
+    else if (mq.addListener) { mq.addListener(aplicar); }
+  });
+
+  // Celular: clique no botão
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest && e.target.closest("#themeToggle");
+    if (!btn) { return; }
+    var novo = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", novo);
+    try { localStorage.setItem("theme", novo); } catch (err) {}
+  });
+})();
+</script>
+<style>
+:root {
+--eyebrow-bg: #E0E7FF;
+--eyebrow-text: #3730A3;
+--toggle-bg: #111827;
+--toggle-fg: #FFFFFF;
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --surface-hover: #F1F5F9;
+  --ink: #0F172A;
+  --muted: #64748B;
+  --line: #E2E8F0;
+ 
+  /* Cores de destaque tech e dinâmicas */
+  --primary: #4F46E5;
+  --primary-soft: #EEF2FF;
+  --accent: #F97316;
+  --accent-soft: #FFF7ED;
+  --on-accent: #FFFFFF;
+  --on-primary: #FFFFFF;
+ 
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+ 
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+ 
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+ 
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --opcao-texto: #0F172A;
+--opcao-bg: #FFFFFF;
+--opcao-borda: #E2E8F0;
+--opcao-escolha-bg: #E0E7FF;
+--opcao-escolha-borda: #4F46E5;
+--opcao-escolha-texto: #1E1B4B;
+--opcao-letra-bg: #EEF2FF;
+--opcao-letra-texto: #4F46E5;
+    --bg: #0B0F19;
+    --surface: #131B2E;
+    --surface-hover: #1E293B;
+    --ink: #F8FAFC;
+    --muted: #94A3B8;
+    --line: #1E293B;
+ 
+    --primary: #818CF8;
+    --primary-soft: #1E1B4B;
+    --accent: #FB923C;
+    --accent-soft: #431407;
+    --on-accent: #0B0F19;
+    --on-primary: #0B0F19;
+ 
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.4);
+    color-scheme: dark;
+  }
+}
+ 
+:root[data-theme="dark"] {
+  --opcao-texto: #F8FAFC;
+--opcao-bg: #131B2E;
+--opcao-borda: #334155;
+--opcao-escolha-bg: #312E81;
+--opcao-escolha-borda: #818CF8;
+--opcao-escolha-texto: #FFFFFF;
+--opcao-letra-bg: #1E1B4B;
+--opcao-letra-texto: #C7D2FE;
+--eyebrow-bg: rgba(129, 140, 248, 0.18);
+--eyebrow-text: #C7D2FE;
+--toggle-bg: #E5E7EB;
+--toggle-fg: #0F172A;
+  --bg: #0B0F19;
+  --surface: #131B2E;
+  --surface-hover: #1E293B;
+  --ink: #F8FAFC;
+  --muted: #94A3B8;
+  --line: #1E293B;
+ 
+  --primary: #818CF8;
+  --primary-soft: #1E1B4B;
+  --accent: #FB923C;
+  --accent-soft: #431407;
+  --on-accent: #0B0F19;
+  --on-primary: #0B0F19;
+ 
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.4);
+  color-scheme: dark;
+}
+ 
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+ 
+/* ---------------- NOVO FUNDO ---------------- */
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font: 400 1rem/1.6 var(--font-body);
+  padding-inline: 16px;
+  padding-block: 0 64px;
+  -webkit-font-smoothing: antialiased;
+}
+ 
+.wrap {
+  max-width: 680px;
+  margin-inline: auto;
+}
+ 
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin: 0;
+}
+ 
+p { margin: 0; }
+ 
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+ 
+button {
+  font: inherit;
+  color: inherit;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+ 
+/* ---------------- Abas Superiores (botões do menu) ---------------- */
+.abas {
+  position: sticky;
+  top: 10px;
+  z-index: 10;
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: var(--shadow-md);
+}
+ 
+.aba {
+  flex: 1;
+  min-height: 40px;
+  padding: 6px 14px;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  color: var(--muted);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+ 
+.aba:hover:not([aria-current="page"]) {
+  color: var(--ink);
+  background: var(--surface-hover);
+}
+ 
+.aba[aria-current="page"] {
+  background: var(--primary);
+  color: var(--on-primary);
+  box-shadow: 0 4px 12px -2px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+ 
+/* ---------------- Início (Hero & Módulos) ---------------- */
+.hero {
+  padding-block: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+ 
+:root {
+  /* Tema claro (padrão) */
+  --eyebrow-bg: #e0e7ff;
+  --eyebrow-text: #3730a3;
+}
+
+/* Escuro automático, pela preferência do sistema */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --eyebrow-bg: rgba(129, 140, 248, 0.18);
+    --eyebrow-text: #c7d2fe;
+  }
+}
+
+/* Escuro manual, via data-theme="dark" */
+:root[data-theme="dark"] {
+  --eyebrow-bg: rgba(129, 140, 248, 0.18);
+  --eyebrow-text: #c7d2fe;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--eyebrow-text);
+  background: var(--eyebrow-bg);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+ 
+.hero h1 {
+  text-align: justify;
+  font-size: clamp(2.2rem, 8vw, 3.25rem);
+  color: var(--ink);
+}
+ 
+.barra {
+  width: 54px;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+ 
+.lead { color: var(--ink); }
+
+.modulos {
+  display: grid;
+  gap: 16px;
+  padding-block: 8px 28px;
+}
+ 
+.modulo {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+ 
+.modulo:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+ 
+.modulo h2 {
+  font-size: 1.5rem;
+}
+ 
+.modulo p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+ 
+.modulo .rotulo {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+ 
+/* ---------------- NOVO LAYOUT DOS BOTÕES ---------------- */
+.btn {
+  min-height: 48px;
+  padding: 10px 14px 10px 26px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, var(--primary), color-mix(in srgb, var(--primary) 65%, var(--accent)));
+  color: var(--on-primary);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 6px 16px -4px color-mix(in srgb, var(--primary) 55%, transparent);
+}
+ 
+.btn::after {
+  content: "→";
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+ 
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px -6px color-mix(in srgb, var(--primary) 65%, transparent);
+}
+ 
+.btn:hover::after {
+  transform: translateX(3px);
+}
+ 
+.btn:active {
+  transform: scale(0.97);
+}
+ 
+.btn.sec {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  box-shadow: none;
+}
+ 
+.btn.sec::after {
+  background: var(--primary-soft);
+}
+ 
+.btn.sec:hover {
+  background: var(--primary);
+  color: var(--on-primary);
+  box-shadow: 0 10px 22px -6px color-mix(in srgb, var(--primary) 55%, transparent);
+}
+ 
+/* Botão "Ler o guia" */
+.btn.sec.ler {
+  padding: 10px 24px 10px 20px;
+  gap: 10px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: 4px 4px 0 var(--primary);
+}
+ 
+.btn.sec.ler::before {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+ 
+.btn.sec.ler::after {
+  display: none;
+}
+ 
+.btn.sec.ler:hover {
+  background: var(--primary-soft);
+  color: var(--ink);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--primary);
+}
+ 
+.btn.sec.ler:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--primary);
+}
+ 
+.sobre {
+  border-top: 1px solid var(--line);
+  padding-block: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+ 
+.sobre strong {
+  color: var(--ink);
+}
+ 
+/* ---------------- Jogo e Dilemas ---------------- */
+.jogo {
+  padding-block: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+ 
+.progresso-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+ 
+.trilho {
+  height: 8px;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+ 
+.trilho > i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 999px;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+ 
+.contexto {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: white;
+  background: #066383;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+ 
+.situacao {
+  font-size: clamp(1.4rem, 5.5vw, 1.85rem);
+  font-weight: 700;
+  color: var(--ink);
+}
+ 
+.pergunta {
+  font-size: clamp(1.4rem, 5.5vw, 1.85rem);
+  font-weight: 700;
+  color: var(--ink);
+}
+ 
+/* Opções do quiz (botões A / B / C) */
+.opcoes {
+  display: grid;
+  gap: 12px;
+  counter-reset: opcao;
+}
+ 
+.opcao {
+  counter-increment: opcao;
+  min-height: 60px;
+  padding: 10px 16px 10px 12px;
+  text-align: left;
+  cursor: pointer;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.18s ease;
+}
+ 
+.opcao::before {
+  content: counter(opcao, upper-alpha);
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.18s ease;
+}
+ 
+.opcao > span:first-child {
+  flex: 1;
+}
+ 
+.opcao:hover:not(:disabled) {
+  border-color: var(--primary);
+  background: var(--surface-hover);
+  transform: translateX(4px);
+}
+ 
+.opcao:hover:not(:disabled)::before {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+ 
+.opcao:active:not(:disabled) {
+  transform: scale(0.98);
+}
+ 
+.opcao:disabled {
+  cursor: default;
+  color: var(--ink);
+}
+ 
+.opcao.escolha {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+ 
+.opcao.escolha::before {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+ 
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+ 
+.tag {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 4px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+ 
+.tag.sug {
+  background: orange;
+  color: #FFFFFF;
+}
+ 
+.tag.eu {background-color: green;
+  color :#ffffff; }
+ 
+/* Feedback do Dilema */
+.retorno {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+ 
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+ 
+.retorno h3 {
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+ 
+.retorno .veredito {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--primary);
+}
+ 
+.retorno p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+ 
+.retorno .btn {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+ 
+/* ---------------- Resultado ---------------- */
+.resultado h2 {
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+}
+ 
+.resumo {
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+ 
+.tabela-box {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+ 
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 520px;
+  font-size: 0.9rem;
+}
+ 
+th, td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+ 
+th {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--surface-hover);
+}
+ 
+tr:last-child td { border-bottom: 0; }
+ 
+.nota {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+ 
+.acoes {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+ 
+.carta {
+  border-left: 4px solid var(--primary);
+  background: var(--primary-soft);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 16px;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+ 
+/* ---------------- Guia ---------------- */
+.guia {
+  padding-block: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+ 
+.guia h2 {
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+}
+ 
+.dicas {
+  display: grid;
+  gap: 14px;
+}
+ 
+.dica {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+ 
+.dica h3 {
+  font-size: 1.35rem;
+  color: var(--ink);
+}
+ 
+.dica p { color: var(--ink); }
+ 
+.dica .pratica {
+  color: var(--ink);
+  font-size: 0.925rem;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+ 
+.dica .pratica b {
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  margin-right: 6px;
+}
+ 
+.fecho {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  padding-block: 16px 0;
+  color: var(--ink);
+  text-wrap: balance;
+}
+ 
+.rodape {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 0.8125rem;
+  color: var(--muted);
+  text-align: center;
+  font-size: 1.0rem;
+}
+ 
+@media (min-width: 640px) {
+  .modulos { grid-template-columns: 1fr 1fr; }
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+  .trilho > i,
+  .btn,
+  .btn::after,
+  .opcao,
+  .retorno {
+    transition: none;
+    animation: none;
+  }
+}
+.theme-toggle {
+  display: none;
+}
+
+:root {
+  --bg: #ffffff;
+  --text: #111827;
+  --toggle-bg: #111827;
+  --toggle-fg: #ffffff;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f172a;
+  --text: #e5e7eb;
+  --toggle-bg: #e5e7eb;
+  --toggle-fg: #0f172a;
+}
+
+/* Isto é o que realmente muda a página */
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
+}
+
+.theme-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .theme-toggle {
+    position: fixed;
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index: 2147483647;      /* sempre por cima */
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--toggle-bg);
+    color: var(--toggle-fg);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .theme-toggle:active {
+    transform: scale(0.92);
+  }
+
+  .theme-toggle svg {
+    pointer-events: none;     /* o clique sempre cai no botão */
+  }
+
+  .theme-toggle .icon-sun  { display: none; }
+  .theme-toggle .icon-moon { display: block; }
+
+  :root[data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
+  :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+}
+</style>
+</head>
+<body>
+ 
+<div class="wrap">
+  <nav class="abas" aria-label="Seções do site">
+    <button class="aba" type="button" data-aba="inicio">Início</button>
+    <button class="aba" type="button" data-aba="jogo">Jogo</button>
+    <button class="aba" type="button" data-aba="guia">Guia</button>
+  </nav>
+ 
+  <!-- INÍCIO -->
+  <main id="aba-inicio">
+    <section class="hero">
+      <p class="eyebrow">Semana da Biblioteca 2026</p>
+      <h1>Humano ou IA? <br>Você decide</h1>
+      <div class="barra" aria-hidden="true"></div>
+      <p class="lead">Um quiz junto à um guia de uso consciente da inteligência artificial, sobre o tema <b>Inteligência com Consciência: o humano no centro da era digital</b>.</p>
+    </section>
+    <section class="modulos" aria-label="Módulos">
+      <article class="modulo">
+        <p class="rotulo">Seção 1</p>
+        <h2>Quiz</h2>
+        <p><span class="js-total">8</span> situações do dia a dia. Em cada uma, você escolhe quem deve decidir: a IA, a pessoa ou os dois juntos.</p>
+        <button class="btn" type="button" data-ir="jogo">Jogar</button>
+      </article>
+      <article class="modulo">
+        <p class="rotulo">Seção 2</p>
+        <h2>Guia de uso sobre IA</h2>
+        <p><span class="js-total-dicas">6</span> hábitos para usar a IA com responsabilidade, nos estudos e fora da escola.</p>
+        <button class="btn sec ler" type="button" data-ir="guia">Ler o guia</button>
+      </article>
+    </section>
+    <section class="sobre">
+      <p><strong>Como funciona.</strong> O jogo não tem resposta única. Cada dilema traz um caminho sugerido e uma explicação para você pensar.</p>
+      <p>Não pedimos nome nem cadastro, e nada do que você escolhe é guardado.</p>
+    </section>
+  </main>
+ 
+  <!-- JOGO -->
+  <main id="aba-jogo" hidden>
+    <section class="jogo" id="quiz">
+      <div>
+        <div class="progresso-linha"><span id="progresso-texto">Pergunta 1 de 8</span><span id="progresso-ctx"></span></div>
+        <div class="trilho" aria-hidden="true"><i id="progresso-barra"></i></div>
+      </div>
+      <p class="contexto" id="q-contexto"></p>
+      <h2 class="situacao" id="q-situacao" tabindex="-1"></h2>
+      <p class="pergunta" id="q-pergunta"></p>
+      <div class="opcoes" id="q-opcoes" role="group" aria-label="Quem deve decidir?"></div>
+      <section class="retorno" id="q-retorno" hidden aria-live="polite">
+        <h3 id="q-retorno-titulo" tabindex="-1">Para pensar</h3>
+        <p class="veredito" id="q-veredito"></p>
+        <p id="q-explicacao"></p>
+        <button class="btn" type="button" id="q-proximo">Próxima pergunta</button>
+      </section>
+    </section>
+ 
+    <section class="jogo resultado" id="resultado" hidden>
+      <p class="eyebrow">Resultado</p>
+      <h2 id="r-titulo" tabindex="-1"></h2>
+      <p class="resumo" id="r-resumo"></p>
+      <div class="tabela-box">
+        <table>
+          <thead><tr><th scope="col">Pergunta</th><th scope="col">Sua escolha</th><th scope="col">Caminho sugerido</th></tr></thead>
+          <tbody id="r-linhas"></tbody>
+        </table>
+      </div>
+      <p class="nota">Não existe placar certo ou errado. O que importa é saber explicar por que você escolheu cada caminho.</p>
+      <p class="carta">Na sexta, 30/10, a Carta para o Futuro é escrita à mão, sem IA. Pense nela: que profissional você quer ser?</p>
+      <div class="acoes">
+        <button class="btn" type="button" id="r-reiniciar">Jogar de novo</button>
+        <button class="btn sec ler" type="button" data-ir="guia">Ler o guia</button>
+      </div>
+    </section>
+  </main>
+ 
+  <!-- GUIA -->
+  <main id="aba-guia" hidden>
+    <section class="guia">
+      <p class="eyebrow">Sessão 2</p>
+      <h2>Guia de uso consciente da IA</h2>
+      <p class="lead">Seis hábitos simples para usar a inteligência artificial sem abrir mão do seu raciocínio.</p>
+      <div class="dicas" id="dicas"></div>
+      <p class="fecho">A IA pode ajudar a decidir, mas quem responde pela decisão é você. Por isso, pense bem antes de agir.</p>
+    </section>
+  </main>
+ 
+  <footer class="rodape">
+    Semana da Biblioteca 2026 · 26 a 30 de outubro · Davi Vitor, Gabriel Mello e Gustavo Souza<br> Desenvolvimento de Sistemas, SENAI Suzano
+  </footer>
+</div>
+ 
+<script>
+/* ============================================================
+   COMO ADAPTAR PARA OUTRA TURMA QUE VAI ASSISTIR A APRESENTAÇÃO
+   Todo o conteúdo do site está nas duas listas abaixo (DILEMAS e DICAS).
+   Para criar uma nova versão, troque os textos e mantenha a estrutura.
+ 
+   DILEMAS: cada item tem
+     contexto   (rótulo curto, ex.: "Escola")
+     situacao   (o dilema, em uma ou duas frases)
+     pergunta   (a pergunta feita ao jogador)
+     sugerido   ("ia", "pessoa" ou "juntos")
+     explicacao (por que esse caminho é o sugerido)
+ 
+   DICAS: cada item tem titulo, texto e pratica.
+   O layout (CSS) e a lógica do jogo não precisam ser alterados.
+   ============================================================ */
+ 
+var OPCOES = {
+  ia: "Só a IA decide",
+  pessoa: "Só a pessoa decide",
+  juntos: "IA e pessoa, juntas"
+};
+ 
+var DILEMAS = [
+  {
+    contexto: "Aprendizado",
+    situacao: "Se uma IA consegue resolver um exercício em segundos, qual é a melhor forma de usá-la para aprender de verdade?",
+    sugerido: "juntos",
+    explicacao: "A IA pode ajudar a aprender programação, mas existe uma diferença entre copiar um código pronto e compreender como ele funciona. Quando você tenta resolver um problema, encontra suas próprias dificuldades e usa a IA para entender os erros, desenvolve o raciocínio lógico e a autonomia."
+  },
+  {
+    contexto: "ÉTICA E CONSCIÊNCIA",
+    situacao: "Se uma IA recomenda não contratar alguém, quem deve decidir o que fazer?",
+    sugerido: "pessoa",
+    explicacao: "A decisão final de contratar alguém deve ficar sob responsabilidade humana, considerando possíveis erros e preconceitos da IA."
+  },
+  {
+    contexto: "Mundo do trabalho",
+    situacao: "No futuro do trabalho,quem deve decidir quais tarefas serão automatizadas pela IA?",
+    sugerido: "juntos",
+    explicacao: "A IA pode identificar tarefas que podem ser automatizadas, mas as pessoas devem avaliar as consequências e decidir como implementá-las."
+  },
+  {
+    contexto: "Educação e tecnologia nas bibliotecas",
+    situacao: "Como a inteligência artificial deve ser utilizada nas bibliotecas para ajudar os estudantes a pesquisar informações?",
+    sugerido: "juntos",
+    explicacao: "A IA pode ajudar a encontrar e organizar informações, enquanto bibliotecários e estudantes verificam a confiabilidade das fontes e a qualidade das pesquisas"
+  },
+  {
+    contexto: "Dia a dia",
+    situacao: "O aplicativo de mapas escolhe o trajeto mais rápido para você chegar à escola.Quem decide a rota?",
+    sugerido: "ia",
+    explicacao: "É uma tarefa de baixo risco e fácil de conferir: se a rota parecer estranha, você percebe e muda. Entregar a decisão à IA faz sentido quando o erro é pequeno e dá para corrigir."
+  },
+  {
+    contexto: "Ser humano no centro",
+    situacao: "Em uma decisão médica importante, quem deve decidir o tratamento de um paciente?",
+    sugerido: "pessoa",
+    explicacao: "Diagnósticar alguém não é apenas no exame exige ouvir a pessoa, entender o contexto e responder pelas consequências. A IA não escuta nem sente, e pode errar ao interpretar um comportamento ou sentimento. Decisões que afetam a vida de alguém ficam com pessoas."
+  },
+  {
+    contexto: "Educação e ética",
+    situacao: "Quando a IA fornece uma informação duvidosa, quem deve decidir se ela é confiável?",
+    sugerido: "pessoa",
+    explicacao: "A IA pode atender clientes e resolver problemas simples, enquanto as pessoas definem os limites e intervêm em situações complexas."
+  },
+  {
+    contexto: "Rotina",
+    situacao: "O e-mail separa mensagens de spam e as envia automaticamente para a lixeira, Quem decide o que é spam?",
+    sugerido: "ia",
+    explicacao: "Filtrar grande volume de mensagens repetitivas é um bom trabalho para a IA. Vale olhar a pasta de spam de vez em quando, porque às vezes ela erra e esconde mensagens importantes."
+  }
+];
+ 
+var DICAS = [
+  {
+    titulo: "Confira as fontes",
+    texto: "Respostas de IA podem parecer certas e estar erradas. Procure a informação em uma fonte confiável antes de usar ou peça as fontes de onde ela buscou as informações, caso for fontes confiaveis busque na fonte e se aprofunde na informação procurada.",
+    pratica: "Compare com um livro do relacionado ao tema procurado na biblioteca do SENAI, um site oficial ou peça ajuda a professora Lu."
+  },
+  {
+    titulo: "Proteja seus dados",
+    texto: "Oi, pessoal! Vale lembrar que tudo o que você escreve em uma ferramenta de IA pode ser guardado. Por isso, evite enviar senhas, documentos, endereço ou fotos de outras pessoas. Um pouco de atenção ajuda a manter todo mundo seguro. Vamos usar a tecnologia com responsabilidade!",
+    pratica: "Ao usar IA, troque nomes e dados pessoais por exemplos. Em vez de informações verdadeiras, use algo como “Maria” ou “Rua das Flores, 123”. Assim você protege a sua privacidade e a das outras pessoas."
+  },
+  {
+    titulo: "Diga quando usou IA",
+    texto: "Esconder o uso de IA acaba enganando quem lê. Contar como você usou mostra honestidade e ajuda o professor a entender o que você realmente aprendeu. Ser honesto faz toda a diferença!",
+    pratica: "Escreva uma linha contando como você usou a IA, por exemplo: “usei IA para revisar a ortografia.” É rápido e deixa tudo mais facil."
+  },
+  {
+    titulo: "Pense em resolver sozinho primeiro",
+    texto: "Acredite em si mesmo, antes de pedir ajuda a uma IA tente fazer primeiro, caso não consiga peça ajuda a um docente caso ele não consiga te ajudar procure uma plataforma confiavel, leia as informações e estude elas.",
+    pratica: "Escreva o seu ponto de vista e só depois peça uma opinião."
+  },
+  {
+    titulo: "Respeite as pessoas",
+    texto: "Imagens, vozes e textos podem ser criados ou alterados por IA. Por isso, não use a imagem de alguém sem permissão e não compartilhe conteúdo falso. Cuidar disso protege você e as outras pessoas.",
+    pratica: "Antes de compartilhar, pergunte a si mesmo: isso pode machucar alguém? Se a resposta for sim, é melhor não enviar."
+  },
+  {
+    titulo: "A decisão é sua",
+    texto: "A IA sugere, mas quem responde pelo que faz é você. Quanto maior o impacto na vida de uma pessoa, mais importante é que você esteja no comando das decisões.",
+    pratica: "Em decisões importantes, converse com alguém em quem você confia. Ouvir outra opinião ajuda a escolher melhor."
+  }
+];
+ 
+/* ------------------------- lógica (não precisa mudar) ------------------------- */
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var abas = { inicio: $("aba-inicio"), jogo: $("aba-jogo"), guia: $("aba-guia") };
+  var botoesAba = document.querySelectorAll(".aba");
+  var total = DILEMAS.length;
+  var indice = 0;
+  var respostas = [];
+  var respondeu = false;
+ 
+  function mostrar(nome) {
+    if (!abas[nome]) { nome = "inicio"; }
+    Object.keys(abas).forEach(function (k) { abas[k].hidden = (k !== nome); });
+    botoesAba.forEach(function (b) {
+      if (b.getAttribute("data-aba") === nome) { b.setAttribute("aria-current", "page"); }
+      else { b.removeAttribute("aria-current"); }
+    });
+    window.scrollTo(0, 0);
+  }
+  function ir(nome) {
+    try { location.hash = nome; } catch (e) { /* sem hash */ }
+    mostrar(nome);
+  }
+  botoesAba.forEach(function (b) {
+    b.addEventListener("click", function () { ir(b.getAttribute("data-aba")); });
+  });
+  document.querySelectorAll("[data-ir]").forEach(function (b) {
+    b.addEventListener("click", function () { ir(b.getAttribute("data-ir")); });
+  });
+  window.addEventListener("hashchange", function () {
+    mostrar((location.hash || "").replace("#", ""));
+  });
+ 
+  document.querySelectorAll(".js-total").forEach(function (e) { e.textContent = total; });
+  document.querySelectorAll(".js-total-dicas").forEach(function (e) { e.textContent = DICAS.length; });
+ 
+  /* Guia */
+  var caixaDicas = $("dicas");
+  DICAS.forEach(function (d) {
+    var art = document.createElement("article");
+    art.className = "dica";
+    var h = document.createElement("h3"); h.textContent = d.titulo;
+    var p = document.createElement("p"); p.textContent = d.texto;
+    var pr = document.createElement("p"); pr.className = "pratica";
+    var b = document.createElement("b"); b.textContent = "Na prática";
+    pr.appendChild(b); pr.appendChild(document.createTextNode(d.pratica));
+    art.appendChild(h); art.appendChild(p); art.appendChild(pr);
+    caixaDicas.appendChild(art);
+  });
+ 
+  /* Jogo */
+  function mostrarPergunta() {
+    var d = DILEMAS[indice];
+    respondeu = false;
+    $("quiz").hidden = false;
+    $("resultado").hidden = true;
+    $("progresso-texto").textContent = "Pergunta " + (indice + 1) + " de " + total;
+    $("progresso-barra").style.width = (indice / total * 100) + "%";
+    $("q-contexto").textContent = d.contexto;
+    $("q-situacao").textContent = d.situacao;
+   $("q-pergunta").textContent = d.pergunta || "";
+   $("q-pergunta").hidden = !d.pergunta;
+    $("q-retorno").hidden = true;
+ 
+    var caixa = $("q-opcoes");
+    caixa.innerHTML = "";
+    ["ia", "pessoa", "juntos"].forEach(function (chave) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "opcao";
+      btn.setAttribute("data-chave", chave);
+      var rotulo = document.createElement("span");
+      rotulo.textContent = OPCOES[chave];
+      var tags = document.createElement("span");
+      tags.className = "tags";
+      btn.appendChild(rotulo); btn.appendChild(tags);
+      btn.addEventListener("click", function () { escolher(chave); });
+      caixa.appendChild(btn);
+    });
+  }
+ 
+  function addTag(btn, classe, texto) {
+    var t = document.createElement("span");
+    t.className = "tag " + classe;
+    t.textContent = texto;
+    btn.querySelector(".tags").appendChild(t);
+  }
+ 
+  function escolher(chave) {
+    if (respondeu) { return; }
+    respondeu = true;
+    var d = DILEMAS[indice];
+    respostas[indice] = chave;
+    document.querySelectorAll("#q-opcoes .opcao").forEach(function (btn) {
+      var k = btn.getAttribute("data-chave");
+      btn.disabled = true;
+      if (k === chave) { btn.classList.add("escolha"); addTag(btn, "eu", "Sua escolha"); }
+      if (k === d.sugerido) { addTag(btn, "sug", "Caminho sugerido"); }
+    });
+    $("q-veredito").textContent = (chave === d.sugerido)
+      ? "Você chegou ao mesmo caminho que sugerimos."
+      : "Nossa sugestão era: " + OPCOES[d.sugerido].toLowerCase() + ". Outras visões são possíveis, o importante é saber explicar a sua.";
+    $("q-explicacao").textContent = d.explicacao;
+    $("q-proximo").textContent = (indice + 1 < total) ? "Próxima pergunta" : "Ver resultado";
+    $("progresso-barra").style.width = ((indice + 1) / total * 100) + "%";
+    $("q-retorno").hidden = false;
+    $("q-retorno-titulo").focus();
+  }
+ 
+  function mostrarResultado() {
+    var iguais = 0;
+    var linhas = $("r-linhas");
+    linhas.innerHTML = "";
+    DILEMAS.forEach(function (d, i) {
+      if (respostas[i] === d.sugerido) { iguais++; }
+      var tr = document.createElement("tr");
+      [d.contexto + ": " + (d.pergunta || d.situacao).replace(/\?$/, ""), OPCOES[respostas[i]], OPCOES[d.sugerido]].forEach(function (txt) {
+        var td = document.createElement("td"); td.textContent = txt; tr.appendChild(td);
+      });
+      linhas.appendChild(tr);
+    });
+    $("r-titulo").textContent = "Você concordou com " + iguais + " de " + total + " caminhos sugeridos";
+    $("r-resumo").textContent = iguais >= Math.ceil(total / 2)
+      ? "Você olha para cada situação antes de decidir quem deve decidir. Esse é o centro do tema da semana."
+      : "Muitas dessas situações têm mais de uma resposta razoável. Compare as suas escolhas com as sugeridas e converse com a turma.";
+    $("quiz").hidden = true;
+    $("resultado").hidden = false;
+    window.scrollTo(0, 0);
+    $("r-titulo").focus();
+  }
+ 
+  $("q-proximo").addEventListener("click", function () {
+    if (indice + 1 < total) { indice++; mostrarPergunta(); window.scrollTo(0, 0); $("q-situacao").focus(); }
+    else { mostrarResultado(); }
+  });
+  $("r-reiniciar").addEventListener("click", function () {
+    indice = 0; respostas = []; mostrarPergunta(); window.scrollTo(0, 0);
+  });
+ 
+  mostrarPergunta();
+  mostrar((location.hash || "").replace("#", ""));
+})();
+(function () {
+  var root = document.documentElement;
+  var escuro = window.matchMedia("(prefers-color-scheme: dark)");
+  var celular = window.matchMedia("(max-width: 768px)");
+
+  function aplicar() {
+    var salvo = null;
+    try { salvo = localStorage.getItem("theme"); } catch (e) {}
+
+    var tema;
+    if (celular.matches && (salvo === "light" || salvo === "dark")) {
+      tema = salvo;                      // celular: respeita a escolha do botão
+    } else {
+      tema = escuro.matches ? "dark" : "light";   // computador: segue o sistema
+    }
+    root.setAttribute("data-theme", tema);
+  }
+
+  aplicar();
+
+  // Atualiza ao vivo quando o sistema muda ou a tela muda de tamanho
+  [escuro, celular].forEach(function (mq) {
+    if (mq.addEventListener) { mq.addEventListener("change", aplicar); }
+    else if (mq.addListener) { mq.addListener(aplicar); }  // Safari antigo
+  });
+})();
+</script>
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema">
+  <svg class="icon-moon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+  </svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+  </svg>
+</button>
+</body>
+</html>
+
