@@ -93,9 +93,9 @@ body {
 .imagem_falsa {
   background-image: url(../imagem/euu.png);
   margin: auto;
-  width: 450px;
+  width: 100%;
   background-repeat: no-repeat;
-  height: 450px;
+  height: 250px;
 }
 
 .imagem_falsa2 {
@@ -185,20 +185,22 @@ body {
     flex-direction: column;
   }
 
-  .lateral h2{
-    text-align: center;
-  }
+  .coluna {
+    flex-direction: column;
+    width: 0 auto;
+ }
   .cabecalho {
-
+    flex-direction: column;
     padding: 150px;
     background-image: url(../imagem/banner_celular_420x250.png);
-    background-size: center;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }
   .imagem_falsa {
 
     background-position: center;
-    background-size: 80%;
+    background-size: 100%;
   }
 }
+
