@@ -16,6 +16,7 @@
   <!-- Nosso CSS (por último, para vencer os anteriores em caso de empate).
        A fonte Sora é carregada por ele, a partir da pasta fontes/ -->
   <link rel="stylesheet" href="estilo.css">
+  <link rel="preload" as="image" href="imagem/fundo.webp" fetchpriority="high">
 </head>
 <body>
 
@@ -70,7 +71,7 @@
   <section class="sobre">
     <div class="conteiner sobre-conteudo">
       <div class="imagem-f80">
-        <img src="imagem/f80.png" alt="Fotos de cortes de cabelo e barba feitos na barbearia">
+        <img id="ferrarif80" src="imagem/f80.png" alt="Fotos de cortes de cabelo e barba feitos na barbearia">
       </div>
 
       <div class="sobre-descricao">
@@ -97,8 +98,8 @@
 
     <section class="cortes">
 
-      <div class="corte">
-        <img src="imagem/911.png" alt="Corte normal">
+      <div class="corte" >
+        <img id="porsche911" src="imagem/911.webp" alt="Corte normal">
         <div class="corte-info">
           <strong>Porsche 911 Carrera S</strong>
           <span class="corte-preco"><a
@@ -110,7 +111,7 @@
       </div>
 
       <div class="corte">
-        <img src="imagem/320i.png" alt="Barba completa">
+        <img id="bm320i" src="imagem/320i.webp" alt="Barba completa">
         <div class="corte-info">
           <strong>BMW 320i M Sport</strong>
           <span class="corte-preco"><a
@@ -120,7 +121,7 @@
       </div>
 
       <div class="corte">
-        <img src="imagem/c300.png" alt="Corte e barba">
+        <img id="mc300" src="imagem/c300.wepb" alt="Corte e barba">
         <div class="corte-info">
           <strong>Mercedes-Benz C300</strong>
           <span class="corte-preco"><a

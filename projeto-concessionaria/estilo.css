@@ -257,7 +257,7 @@ header {
 .sobre-descricao h2 {
   font-size: 60px;
   margin-bottom: -24px;
-  margin-left: -1300px;
+  margin-left: -600px;
 }
 
 .sobre-descricao p {
@@ -296,6 +296,21 @@ header {
   align-items: stretch;
   gap: 16px;
   padding: 0 44px 34px 44px;
+}
+
+#porsche911{
+  width: 354px;
+  height: 220px;
+}
+
+#bm320i{
+  width: 354px;
+  height: 220px;
+}
+
+#mc300{
+  width: 354px;
+  height: 220px;
 }
 
 .corte {
@@ -492,4 +507,5 @@ header {
   .destaque h1 {
     font-size: 24px;
   }
+}
 }
