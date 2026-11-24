@@ -6,17 +6,32 @@
   <meta name="description" content="Dev Barber: corte, barba e agendamento rápido pelo WhatsApp.">
   <title>Dev Barber - Sua barbearia!</title>
 
-  <!-- Ícones (Font Awesome) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Conexão antecipada com os servidores externos -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
 
-    <!-- Animações ao rolar a página (AOS) -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-  <!-- Nosso CSS (por último, para vencer os anteriores em caso de empate).
-       A fonte Sora é carregada por ele, a partir da pasta fontes/ -->
-  <link rel="stylesheet" href="estilo.css">
+  <!-- Recursos do topo da página carregados com prioridade -->
   <link rel="preload" as="image" href="imagem/fundo.webp" fetchpriority="high">
+  <link rel="preload" href="fontes/sora-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fontes/sora-600.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Nosso CSS (a fonte Sora é carregada por ele, a partir da pasta fontes/) -->
+  <link rel="stylesheet" href="estilo.css">
+
+  <!-- Ícones (Font Awesome): carregado sem bloquear a renderização -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  </noscript>
+
+  <!-- Animações ao rolar a página (AOS): CSS sem bloquear e JS com defer -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+        media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  </noscript>
+  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body>
 
@@ -71,7 +86,8 @@
   <section class="sobre">
     <div class="conteiner sobre-conteudo">
       <div class="imagem-f80">
-        <img id="ferrarif80" src="imagem/f80.png" alt="Fotos de cortes de cabelo e barba feitos na barbearia">
+        <img id="ferrarif80" src="imagem/f80.png" alt="Fotos de cortes de cabelo e barba feitos na barbearia"
+             loading="lazy" decoding="async">
       </div>
 
       <div class="sobre-descricao">
@@ -99,7 +115,8 @@
     <section class="cortes">
 
       <div class="corte" >
-        <img id="porsche911" src="imagem/911.webp" alt="Corte normal">
+        <img id="porsche911" src="imagem/911.webp" alt="Corte normal"
+             width="354" height="220" loading="lazy" decoding="async">
         <div class="corte-info">
           <strong>Porsche 911 Carrera S</strong>
           <span class="corte-preco"><a
@@ -111,7 +128,8 @@
       </div>
 
       <div class="corte">
-        <img id="bm320i" src="imagem/320i.webp" alt="Barba completa">
+        <img id="bm320i" src="imagem/320i.webp" alt="Barba completa"
+             width="354" height="220" loading="lazy" decoding="async">
         <div class="corte-info">
           <strong>BMW 320i M Sport</strong>
           <span class="corte-preco"><a
@@ -121,7 +139,8 @@
       </div>
 
       <div class="corte">
-        <img id="mc300" src="imagem/c300.wepb" alt="Corte e barba">
+        <img id="mc300" src="imagem/c300.wepb" alt="Corte e barba"
+             width="354" height="220" loading="lazy" decoding="async">
         <div class="corte-info">
           <strong>Mercedes-Benz C300</strong>
           <span class="corte-preco"><a
@@ -138,7 +157,7 @@
     <h2>Venha conhecer</h2>
   </div>
 
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.3283854315164!2d-46.31618732378864!3d-23.55664666142097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce709cdd72cb8d%3A0xa0c48f485457b882!2sEscola%20SENAI%20%22Luis%20Eulalio%20de%20Bueno%20Vidigal%20Filho%22!5e0!3m2!1spt-BR!2sbr!4v1795544110699!5m2!1spt-BR!2sbr" width="100%" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.3283854315164!2d-46.31618732378864!3d-23.55664666142097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce709cdd72cb8d%3A0xa0c48f485457b882!2sEscola%20SENAI%20%22Luis%20Eulalio%20de%20Bueno%20Vidigal%20Filho%22!5e0!3m2!1spt-BR!2sbr!4v1795544110699!5m2!1spt-BR!2sbr" width="100%" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de localização"></iframe>
 
   <!-- RODAPÉ -->
   <footer class="rodape">
@@ -149,7 +168,7 @@
     </div>
 
     <div>
-      <a href="../index.html"><img src="imagem/logobranca.png" alt="Logo da barbearia"></a>
+      <a href="../index.html"><img src="imagem/logobranca.png" alt="Logo da barbearia" loading="lazy" decoding="async"></a>
     </div>
 
     <p>Copyright 2026 | Gu Motors<br>Todos os direitos reservados.</p>
@@ -166,6 +185,7 @@
     <span class="dica-texto">Agende Sua visita</span>
   </a>
 
-  <script src="script.js"></script>
+  <!-- defer: roda depois do aos.js, na ordem certa -->
+  <script src="script.js" defer></script>
 </body>
 </html>

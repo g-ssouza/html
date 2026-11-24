@@ -82,11 +82,12 @@ a:focus-visible {
   display: block;
   position: absolute;
   left: 0;
-  top: -1;
+  top: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-image: url("imagem/fundo.svg");
+  /* mesmo arquivo do <link rel="preload"> no HTML */
+  background-image: url("imagem/fundo.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 0;
@@ -447,37 +448,12 @@ header {
     font-size: 14px;
   }
 
- .sobre-conteudo {
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 0;
-  margin-left: 0;          /* remove o deslocamento do desktop */
-}
-
-.sobre-descricao {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;             /* ocupa toda a largura para centralizar de verdade */
-  padding: 0 14px 80px;
-}
-
-.sobre-descricao h2 {
-  text-align: center;
-  font-size: 60px;
-  margin: 20px 0 24px;     /* já zera o margin-left: -600px */
-}
-
-  
-    .imagem-f80 {
-  transform: translateY(30px) rotate(-3deg);
-  padding-bottom: 100px;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;          /* centraliza a imagem também */
-}
+  .sobre-conteudo {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 0;
+    margin-left: 0;          /* remove o deslocamento do desktop */
+  }
 
   .sobre-descricao {
     display: flex;
@@ -485,11 +461,28 @@ header {
     align-items: center;
     justify-content: center;
     text-align: center;
+    width: 100%;             /* ocupa toda a largura para centralizar de verdade */
+    padding: 0 14px 80px;
+  }
+
+  .sobre-descricao h2 {
+    text-align: center;
+    font-size: 60px;
+    margin: 20px 0 24px;     /* também zera o margin-left do desktop */
+  }
+
+  .imagem-f80 {
+    transform: translateY(30px) rotate(-3deg);
+    padding-bottom: 100px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;          /* centraliza a imagem também */
   }
 
   .servicos {
     padding-top: 60px;
   }
+
   .cortes {
     flex-direction: column;
   }
@@ -501,11 +494,11 @@ header {
   .botao-whatsapp img {
     max-width: 64px;
   }
+}
 
 /* Celulares (até 480px) */
 @media screen and (max-width: 480px) {
   .destaque h1 {
     font-size: 24px;
   }
-}
 }
